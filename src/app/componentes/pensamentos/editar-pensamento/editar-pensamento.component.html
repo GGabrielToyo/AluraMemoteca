@@ -1,9 +1,9 @@
-<section class="container criar-pensamentos ff-inter">
+<section class="container editar-pensamentos ff-inter">
     <header class="hearder">
         <h2>Adicione um <br> pensamento novo:</h2>
     </header>
 
-    <form [formGroup]="formulario">
+    <form [formGroup]="formulario" *ngIf="formulario">
         <label for="pensamento">Pensamento:</label>
         <input type="textarea" class="input" id="pensamento" formControlName="conteudo"
             placeholder="Digite um pensamento">
@@ -79,9 +79,9 @@
         </div>
 
         <div class="acoes">
-            <button [disabled]="!formulario.valid" (click)="criarPensamento()" [ngClass]="habilitarBotao()"
-                class="botao">Salvar</button>
-            <button (click)="cancelarPensamento()" class="botao">Cancelar</button>
+            <button [disabled]="!formulario.valid" (click)="editarPensamento()" [ngClass]="habilitarBotao()"
+                class="botao">Editar</button>
+            <button (click)="cancelar()" class="botao">Cancelar</button>
         </div>
 
     </form>
