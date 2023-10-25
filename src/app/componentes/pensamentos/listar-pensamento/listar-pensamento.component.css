@@ -17,7 +17,7 @@
     padding: 2rem 0 5rem;
 }
 
-//campo de busca
+/*campo de busca*/
 .d-flex {
     display: flex;
     flex-direction: column;
@@ -41,6 +41,17 @@
 
 .buscar-pensamentos img {
     padding-right: 15px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.botoes button {
+    margin-left: 10px;
+    margin-right: 2px;
 }
 
 input::placeholder {

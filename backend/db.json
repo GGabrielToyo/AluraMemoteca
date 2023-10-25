@@ -4,36 +4,42 @@
       "id": 2,
       "conteudo": "Editando pensamento 01",
       "autoria": "Dev Gabriel",
-      "modelo": "modelo1"
+      "modelo": "modelo1",
+      "favorito": true
     },
     {
       "conteudo": "Teste 01",
       "autoria": "Gabriel",
       "modelo": "modelo3",
+      "favorito": false,
       "id": 4
     },
     {
       "conteudo": "Teste de pensamento 10",
       "autoria": "Dev Gb",
       "modelo": "modelo1",
+      "favorito": false,
       "id": 5
     },
     {
       "conteudo": "Teste de pensamento 11",
       "autoria": "Dev Gb",
       "modelo": "modelo3",
+      "favorito": false,
       "id": 6
     },
     {
       "id": 7,
       "conteudo": "Teste de pensamento 12 novamente",
       "autoria": "Dev Gabriel Alves Toyo",
-      "modelo": "modelo2"
+      "modelo": "modelo2",
+      "favorito": true
     },
     {
       "conteudo": "Angular",
       "autoria": "dev angular",
       "modelo": "modelo3",
+      "favorito": false,
       "id": 8
     }
   ]
