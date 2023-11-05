@@ -5,3 +5,11 @@ export interface Pensamento {
     modelo: string
     favorito: boolean
 }
+
+export interface Page {
+    content: [],
+    size: number,
+    number: number,
+    numberOfElements: number
+    
+}

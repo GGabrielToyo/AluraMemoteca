@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Pensamento } from './pensamento';
+import { Page, Pensamento } from './pensamento';
 import { Observable } from 'rxjs';
 import { ReturnStatement } from '@angular/compiler';
 
@@ -9,27 +9,31 @@ import { ReturnStatement } from '@angular/compiler';
 })
 export class PensamentoService {
 
-  private readonly API = 'http://localhost:3000/pensamentos';
+  private readonly API = 'http://localhost:8080/pensamentos';
 
 
   constructor(private http: HttpClient) { }
 
-  listar(pagina: number, filtro: string, favoritos: boolean): Observable<Pensamento[]> {
+  listar(pagina: number, filtro: string): Observable<Page> {
     const itensPorPagina = 3;
 
+    
+
     let params = new HttpParams()
-      .set("_page", pagina)
-      .set("_limit", itensPorPagina)
+      .set("size", itensPorPagina)
+      .set("page", pagina)
+
 
     if (filtro.trim().length > 2) {
       params = params.set("q", filtro);
     }
 
-    if(favoritos) {
-      params = params.set("favorito", true);
-    }
+    return this.http.get<Page>(this.API, { params });
+  }
 
-    return this.http.get<Pensamento[]>(this.API, { params });
+  listarFavoritos(): Observable<Pensamento[]> {
+    const url = `${this.API}/favoritos`;
+    return this.http.get<Pensamento[]>(url);
   }
 
   criar(pensamento: Pensamento): Observable<Pensamento> {
@@ -43,8 +47,10 @@ export class PensamentoService {
   }
 
   editar(pensamento: Pensamento): Observable<Pensamento> {
-    const url = `${this.API}/${pensamento.id}`;
+    //const url = `${this.API}/${pensamento.id}`;
+    //return this.http.put<Pensamento>(url, pensamento);
 
+    const url = `${this.API}/editar`;
     return this.http.put<Pensamento>(url, pensamento);
   }
 
