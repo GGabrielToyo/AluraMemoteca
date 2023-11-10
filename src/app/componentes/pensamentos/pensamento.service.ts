@@ -14,10 +14,10 @@ export class PensamentoService {
 
   constructor(private http: HttpClient) { }
 
-  listar(pagina: number, filtro: string): Observable<Page> {
+  listar(pagina: number, filtro: string, favorito: boolean): Observable<Page> {
     const itensPorPagina = 3;
 
-    
+    const url = favorito ? `${this.API}/favoritos` : this.API;
 
     let params = new HttpParams()
       .set("size", itensPorPagina)
@@ -28,12 +28,7 @@ export class PensamentoService {
       params = params.set("q", filtro);
     }
 
-    return this.http.get<Page>(this.API, { params });
-  }
-
-  listarFavoritos(): Observable<Pensamento[]> {
-    const url = `${this.API}/favoritos`;
-    return this.http.get<Pensamento[]>(url);
+    return this.http.get<Page>(url, { params });
   }
 
   criar(pensamento: Pensamento): Observable<Pensamento> {
